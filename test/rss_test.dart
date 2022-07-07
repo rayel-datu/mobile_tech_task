@@ -22,7 +22,8 @@ void main() {
     expect(rssFeed, isNotNull);
   });
 
-  group('RSS Cubit Test', () {
+  // Unit Test for cubit
+  group('Feed Screen Cubit Test', () {
     final BibleYearRSSService bibleYearRSSService = MockBibleYearRSSService();
     final RSSUtils rssUtils = MockRSSUtils();
     FeedScreenCubit cubit = FeedScreenCubit(bibleYearRSSService, rssUtils);
