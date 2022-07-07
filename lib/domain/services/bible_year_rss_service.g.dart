@@ -6,8 +6,6 @@ part of 'bible_year_rss_service.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps
-
 class _BibleYearRSSService implements BibleYearRSSService {
   _BibleYearRSSService(this._dio, {this.baseUrl}) {
     baseUrl ??= 'https://feeds.fireside.fm/bibleinayear/rss';
