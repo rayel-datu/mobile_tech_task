@@ -18,7 +18,8 @@ void main() {
     BibleYearRSSService rssService = BibleYearRSSService(dio);
     String rssFeedBody = await rssService.getRSSFeed();
     RssFeed rssFeed = RssFeed.parse(rssFeedBody);
-    print(rssFeed.copyright);
+
+    expect(rssFeed, isNotNull);
   });
 
   group('RSS Cubit Test', () {

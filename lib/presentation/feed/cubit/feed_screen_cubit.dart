@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_tech_task/domain/services/bible_year_rss_service.dart';
 import 'package:mobile_tech_task/presentation/feed/cubit/feed_state.dart';
@@ -17,7 +18,7 @@ class FeedScreenCubit extends Cubit<FeedState> {
     try {
       feed = await _service.getRSSFeed();
     } on Exception catch (e) {
-      print(e);
+      debugPrint(e.toString());
       emit(FeedState.fetchFail());
     }
 
