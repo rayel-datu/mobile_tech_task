@@ -17,6 +17,7 @@ class FeedScreenCubit extends Cubit<FeedState> {
     try {
       feed = await _service.getRSSFeed();
     } on Exception catch (e) {
+      print(e);
       emit(FeedState.fetchFail());
     }
 

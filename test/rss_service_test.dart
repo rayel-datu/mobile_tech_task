@@ -26,8 +26,11 @@ void main() {
     final RSSUtils rssUtils = MockRSSUtils();
     FeedScreenCubit cubit = FeedScreenCubit(bibleYearRSSService, rssUtils);
 
-    test('getRSS - success', () async {
+    setUpAll(() {
       cubit = FeedScreenCubit(bibleYearRSSService, rssUtils);
+    });
+
+    test('getRSS - success', () async {
       when(bibleYearRSSService.getRSSFeed())
           .thenAnswer((realInvocation) => Future.value(rssFeedString));
 
@@ -44,6 +47,27 @@ void main() {
       );
 
       await cubit.getFeed();
+
+      expect(cubit.state, const TypeMatcher<FeedFetchSuccessState>());
+      if (cubit.state is FeedFetchSuccessState) {
+        FeedFetchSuccessState state = cubit.state as FeedFetchSuccessState;
+        expect(state.rssFeed, isNotNull);
+      }
+    });
+
+    test('getRSS - fail', () async {
+      when(bibleYearRSSService.getRSSFeed()).thenThrow(Exception());
+      expectLater(
+        cubit.stream.asBroadcastStream(),
+        emitsInOrder([
+          FeedState.fetching(),
+          FeedState.fetchFail(),
+        ]),
+      );
+
+      await cubit.getFeed();
+
+      expect(cubit.state, const TypeMatcher<FeedFetchFailState>());
     });
   });
 }
