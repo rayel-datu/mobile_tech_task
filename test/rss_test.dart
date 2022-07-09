@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mobile_tech_task/domain/services/bible_year_rss_service.dart';
+import 'package:mobile_tech_task/entities/positioned_rss_item.dart';
 import 'package:mobile_tech_task/presentation/feed/cubit/feed_screen_cubit.dart';
 import 'package:mobile_tech_task/presentation/feed/cubit/feed_state.dart';
 import 'package:mobile_tech_task/utilities/rss_utils.dart';
@@ -37,14 +38,16 @@ void main() {
           .thenAnswer((realInvocation) => Future.value(rssFeedString));
 
       RssFeed rssFeed = RssFeed.parse(rssFeedString);
+      List<PositionedRSSItem>? items = RSSUtils().getItems(rssFeed);
 
       when(rssUtils.convertString(rssFeedString)).thenReturn(rssFeed);
+      when(rssUtils.getItems(rssFeed)).thenReturn(items);
 
       expectLater(
         cubit.stream.asBroadcastStream(),
         emitsInOrder([
           FeedState.fetching(),
-          FeedState.fetchSuccess(rssFeed),
+          FeedState.fetchSuccess(rssFeed, items ?? []),
         ]),
       );
 
