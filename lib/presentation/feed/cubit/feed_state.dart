@@ -8,9 +8,11 @@ part 'feed_state.freezed.dart';
 class FeedState with _$FeedState {
   factory FeedState.initial() = FeedInitialState;
   factory FeedState.fetching() = FeedFetchingState;
-  factory FeedState.fetchSuccess(
-      RssFeed rssFeed, List<PositionedRSSItem> items) = FeedFetchSuccessState;
+  factory FeedState.fetchSuccess(RssFeed rssFeed, List<PositionedRSSItem> items,
+      PositionedRSSItem? featured) = FeedFetchSuccessState;
   factory FeedState.fetchFail() = FeedFetchFailState;
   factory FeedState.updateSorting(
-      RssFeed rssFeed, List<PositionedRSSItem> items) = FeedUpdateSortingState;
+      RssFeed rssFeed,
+      List<PositionedRSSItem> items,
+      PositionedRSSItem? featured) = FeedUpdateSortingState;
 }

@@ -37,18 +37,26 @@ class FeedScreenCubit extends Cubit<FeedState> {
 
     RssFeed rssFeed = _rssUtils.convertString(feed);
     List<PositionedRSSItem>? positionedRSSItems = _rssUtils.getItems(rssFeed);
+    PositionedRSSItem? randomRSSItem =
+        _rssUtils.getRandomRSSItem(positionedRSSItems ?? []);
 
-    emit(FeedState.fetchSuccess(rssFeed, positionedRSSItems ?? []));
+    emit(FeedState.fetchSuccess(
+      rssFeed,
+      positionedRSSItems ?? [],
+      randomRSSItem,
+    ));
   }
 
   Future<void> reorderList(int oldIndex, int newIndex) async {
     state.maybeWhen(
         orElse: () {},
-        updateSorting: (RssFeed rssFeed, List<PositionedRSSItem> items) {
-          _handleReordering(oldIndex, newIndex, rssFeed, items);
+        updateSorting: (RssFeed rssFeed, List<PositionedRSSItem> items,
+            PositionedRSSItem? featured) {
+          _handleReordering(oldIndex, newIndex, rssFeed, items, featured);
         },
-        fetchSuccess: (RssFeed rssFeed, List<PositionedRSSItem> items) {
-          _handleReordering(oldIndex, newIndex, rssFeed, items);
+        fetchSuccess: (RssFeed rssFeed, List<PositionedRSSItem> items,
+            PositionedRSSItem? featured) {
+          _handleReordering(oldIndex, newIndex, rssFeed, items, featured);
         });
   }
 
@@ -57,6 +65,7 @@ class FeedScreenCubit extends Cubit<FeedState> {
     int newIndex,
     RssFeed rssFeed,
     List<PositionedRSSItem> b,
+    PositionedRSSItem? featured,
   ) {
     PositionedRSSItem positionedRSSItem = b.removeAt(oldIndex);
     b.insert(newIndex, positionedRSSItem);
@@ -64,6 +73,6 @@ class FeedScreenCubit extends Cubit<FeedState> {
     List<PositionedRSSItem> repositionedRssItems =
         _rssUtils.validatePosition(b) ?? [];
 
-    emit(FeedState.updateSorting(rssFeed, repositionedRssItems));
+    emit(FeedState.updateSorting(rssFeed, repositionedRssItems, featured));
   }
 }

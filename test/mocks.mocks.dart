@@ -54,4 +54,9 @@ class MockRSSUtils extends _i1.Mock implements _i5.RSSUtils {
   List<_i6.PositionedRSSItem>? getItems(_i2.RssFeed? rssFeed) =>
       (super.noSuchMethod(Invocation.method(#getItems, [rssFeed]))
           as List<_i6.PositionedRSSItem>?);
+  @override
+  List<_i6.PositionedRSSItem>? validatePosition(
+          List<_i6.PositionedRSSItem>? newList) =>
+      (super.noSuchMethod(Invocation.method(#validatePosition, [newList]))
+          as List<_i6.PositionedRSSItem>?);
 }

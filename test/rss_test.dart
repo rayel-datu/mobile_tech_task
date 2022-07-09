@@ -40,15 +40,17 @@ void main() {
 
         RssFeed rssFeed = RssFeed.parse(rssFeedString);
         List<PositionedRSSItem>? items = RSSUtils().getItems(rssFeed);
+        PositionedRSSItem? featured = items?[0];
 
         when(rssUtils.convertString(rssFeedString)).thenReturn(rssFeed);
         when(rssUtils.getItems(rssFeed)).thenReturn(items);
+        when(rssUtils.getRandomRSSItem(items ?? [])).thenReturn(featured);
 
         expectLater(
           cubit.stream.asBroadcastStream(),
           emitsInOrder([
             FeedState.fetching(),
-            FeedState.fetchSuccess(rssFeed, items ?? []),
+            FeedState.fetchSuccess(rssFeed, items ?? [], featured),
           ]),
         );
 
@@ -81,6 +83,7 @@ void main() {
     group('reorder rss items', () {
       RssFeed? rssFeed;
       List<PositionedRSSItem>? _items;
+      PositionedRSSItem? featured;
       setUpAll(() {
         when(bibleYearRSSService.getRSSFeed())
             .thenAnswer((realInvocation) => Future.value(rssFeedString));
@@ -90,9 +93,11 @@ void main() {
         assert(rssFeed != null);
 
         _items = RSSUtils().getItems(rssFeed!);
+        featured = _items?[0];
 
         when(rssUtils.convertString(rssFeedString)).thenReturn(rssFeed!);
         when(rssUtils.getItems(rssFeed!)).thenReturn(_items);
+        when(rssUtils.getRandomRSSItem(_items ?? [])).thenReturn(featured);
       });
       test('rss item reorder to new position', () async {
         await cubit.getFeed();
@@ -101,7 +106,7 @@ void main() {
 
         cubit.state.maybeWhen(
             orElse: () {},
-            fetchSuccess: (a, b) {
+            fetchSuccess: (a, b, featured) {
               itemsBeforeSort = b;
             });
 
@@ -124,8 +129,9 @@ void main() {
 
         expect(
             cubit.stream.asBroadcastStream(),
-            emitsInAnyOrder(
-                [FeedState.updateSorting(rssFeed!, repositionedRssItems)]));
+            emitsInAnyOrder([
+              FeedState.updateSorting(rssFeed!, repositionedRssItems, featured)
+            ]));
 
         cubit.reorderList(oldIndex, newIndex);
 
@@ -133,7 +139,8 @@ void main() {
 
         cubit.state.maybeWhen(
             orElse: () {},
-            updateSorting: (RssFeed a, List<PositionedRSSItem> b) {
+            updateSorting: (RssFeed a, List<PositionedRSSItem> b,
+                PositionedRSSItem? feature) {
               expect(b[0].item, itemsBeforeSort?[1].item);
               expect(b[1].item, itemsBeforeSort?[0].item);
             });
@@ -145,7 +152,7 @@ void main() {
 
         cubit.state.maybeWhen(
             orElse: () {},
-            fetchSuccess: (a, b) {
+            fetchSuccess: (a, b, featured) {
               itemsBeforeSort = b;
             });
 
@@ -168,8 +175,9 @@ void main() {
 
         expect(
             cubit.stream.asBroadcastStream(),
-            emitsInAnyOrder(
-                [FeedState.updateSorting(rssFeed!, repositionedRssItems)]));
+            emitsInAnyOrder([
+              FeedState.updateSorting(rssFeed!, repositionedRssItems, featured)
+            ]));
 
         cubit.reorderList(oldIndex, newIndex);
 
@@ -177,7 +185,8 @@ void main() {
 
         cubit.state.maybeWhen(
             orElse: () {},
-            updateSorting: (RssFeed a, List<PositionedRSSItem> b) {
+            updateSorting: (RssFeed a, List<PositionedRSSItem> b,
+                PositionedRSSItem? featured) {
               expect(b[0].item, itemsBeforeSort?[0].item);
               expect(b[1].item, itemsBeforeSort?[1].item);
             });
