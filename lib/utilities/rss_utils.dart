@@ -14,7 +14,7 @@ class RSSUtils {
       .values
       .toList();
 
-  List<PositionedRSSItem> validatePosition(List<PositionedRSSItem> newList) =>
+  List<PositionedRSSItem>? validatePosition(List<PositionedRSSItem> newList) =>
       newList
           .asMap()
           .map<int, PositionedRSSItem>(

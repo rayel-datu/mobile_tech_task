@@ -62,7 +62,7 @@ class FeedScreenCubit extends Cubit<FeedState> {
     b.insert(newIndex, positionedRSSItem);
 
     List<PositionedRSSItem> repositionedRssItems =
-        _rssUtils.validatePosition(b);
+        _rssUtils.validatePosition(b) ?? [];
 
     emit(FeedState.updateSorting(rssFeed, repositionedRssItems));
   }
