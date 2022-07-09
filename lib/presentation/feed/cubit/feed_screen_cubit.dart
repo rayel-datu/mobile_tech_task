@@ -40,4 +40,30 @@ class FeedScreenCubit extends Cubit<FeedState> {
 
     emit(FeedState.fetchSuccess(rssFeed, positionedRSSItems ?? []));
   }
+
+  Future<void> reorderList(int oldIndex, int newIndex) async {
+    state.maybeWhen(
+        orElse: () {},
+        updateSorting: (RssFeed rssFeed, List<PositionedRSSItem> items) {
+          _handleReordering(oldIndex, newIndex, rssFeed, items);
+        },
+        fetchSuccess: (RssFeed rssFeed, List<PositionedRSSItem> items) {
+          _handleReordering(oldIndex, newIndex, rssFeed, items);
+        });
+  }
+
+  void _handleReordering(
+    int oldIndex,
+    int newIndex,
+    RssFeed rssFeed,
+    List<PositionedRSSItem> b,
+  ) {
+    PositionedRSSItem positionedRSSItem = b.removeAt(oldIndex);
+    b.insert(newIndex, positionedRSSItem);
+
+    List<PositionedRSSItem> repositionedRssItems =
+        _rssUtils.validatePosition(b);
+
+    emit(FeedState.updateSorting(rssFeed, repositionedRssItems));
+  }
 }

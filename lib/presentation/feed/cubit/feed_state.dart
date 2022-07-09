@@ -11,4 +11,6 @@ class FeedState with _$FeedState {
   factory FeedState.fetchSuccess(
       RssFeed rssFeed, List<PositionedRSSItem> items) = FeedFetchSuccessState;
   factory FeedState.fetchFail() = FeedFetchFailState;
+  factory FeedState.updateSorting(
+      RssFeed rssFeed, List<PositionedRSSItem> items) = FeedUpdateSortingState;
 }

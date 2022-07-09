@@ -36,6 +36,14 @@ class _$FeedStateTearOff {
   FeedFetchFailState fetchFail() {
     return FeedFetchFailState();
   }
+
+  FeedUpdateSortingState updateSorting(
+      RssFeed rssFeed, List<PositionedRSSItem> items) {
+    return FeedUpdateSortingState(
+      rssFeed,
+      items,
+    );
+  }
 }
 
 /// @nodoc
@@ -50,6 +58,8 @@ mixin _$FeedState {
     required TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)
         fetchSuccess,
     required TResult Function() fetchFail,
+    required TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)
+        updateSorting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,6 +69,8 @@ mixin _$FeedState {
     TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
         fetchSuccess,
     TResult Function()? fetchFail,
+    TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
+        updateSorting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,6 +80,8 @@ mixin _$FeedState {
     TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
         fetchSuccess,
     TResult Function()? fetchFail,
+    TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
+        updateSorting,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -77,6 +91,7 @@ mixin _$FeedState {
     required TResult Function(FeedFetchingState value) fetching,
     required TResult Function(FeedFetchSuccessState value) fetchSuccess,
     required TResult Function(FeedFetchFailState value) fetchFail,
+    required TResult Function(FeedUpdateSortingState value) updateSorting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -85,6 +100,7 @@ mixin _$FeedState {
     TResult Function(FeedFetchingState value)? fetching,
     TResult Function(FeedFetchSuccessState value)? fetchSuccess,
     TResult Function(FeedFetchFailState value)? fetchFail,
+    TResult Function(FeedUpdateSortingState value)? updateSorting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -93,6 +109,7 @@ mixin _$FeedState {
     TResult Function(FeedFetchingState value)? fetching,
     TResult Function(FeedFetchSuccessState value)? fetchSuccess,
     TResult Function(FeedFetchFailState value)? fetchFail,
+    TResult Function(FeedUpdateSortingState value)? updateSorting,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -158,6 +175,8 @@ class _$FeedInitialState implements FeedInitialState {
     required TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)
         fetchSuccess,
     required TResult Function() fetchFail,
+    required TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)
+        updateSorting,
   }) {
     return initial();
   }
@@ -170,6 +189,8 @@ class _$FeedInitialState implements FeedInitialState {
     TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
         fetchSuccess,
     TResult Function()? fetchFail,
+    TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
+        updateSorting,
   }) {
     return initial?.call();
   }
@@ -182,6 +203,8 @@ class _$FeedInitialState implements FeedInitialState {
     TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
         fetchSuccess,
     TResult Function()? fetchFail,
+    TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
+        updateSorting,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -197,6 +220,7 @@ class _$FeedInitialState implements FeedInitialState {
     required TResult Function(FeedFetchingState value) fetching,
     required TResult Function(FeedFetchSuccessState value) fetchSuccess,
     required TResult Function(FeedFetchFailState value) fetchFail,
+    required TResult Function(FeedUpdateSortingState value) updateSorting,
   }) {
     return initial(this);
   }
@@ -208,6 +232,7 @@ class _$FeedInitialState implements FeedInitialState {
     TResult Function(FeedFetchingState value)? fetching,
     TResult Function(FeedFetchSuccessState value)? fetchSuccess,
     TResult Function(FeedFetchFailState value)? fetchFail,
+    TResult Function(FeedUpdateSortingState value)? updateSorting,
   }) {
     return initial?.call(this);
   }
@@ -219,6 +244,7 @@ class _$FeedInitialState implements FeedInitialState {
     TResult Function(FeedFetchingState value)? fetching,
     TResult Function(FeedFetchSuccessState value)? fetchSuccess,
     TResult Function(FeedFetchFailState value)? fetchFail,
+    TResult Function(FeedUpdateSortingState value)? updateSorting,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -278,6 +304,8 @@ class _$FeedFetchingState implements FeedFetchingState {
     required TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)
         fetchSuccess,
     required TResult Function() fetchFail,
+    required TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)
+        updateSorting,
   }) {
     return fetching();
   }
@@ -290,6 +318,8 @@ class _$FeedFetchingState implements FeedFetchingState {
     TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
         fetchSuccess,
     TResult Function()? fetchFail,
+    TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
+        updateSorting,
   }) {
     return fetching?.call();
   }
@@ -302,6 +332,8 @@ class _$FeedFetchingState implements FeedFetchingState {
     TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
         fetchSuccess,
     TResult Function()? fetchFail,
+    TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
+        updateSorting,
     required TResult orElse(),
   }) {
     if (fetching != null) {
@@ -317,6 +349,7 @@ class _$FeedFetchingState implements FeedFetchingState {
     required TResult Function(FeedFetchingState value) fetching,
     required TResult Function(FeedFetchSuccessState value) fetchSuccess,
     required TResult Function(FeedFetchFailState value) fetchFail,
+    required TResult Function(FeedUpdateSortingState value) updateSorting,
   }) {
     return fetching(this);
   }
@@ -328,6 +361,7 @@ class _$FeedFetchingState implements FeedFetchingState {
     TResult Function(FeedFetchingState value)? fetching,
     TResult Function(FeedFetchSuccessState value)? fetchSuccess,
     TResult Function(FeedFetchFailState value)? fetchFail,
+    TResult Function(FeedUpdateSortingState value)? updateSorting,
   }) {
     return fetching?.call(this);
   }
@@ -339,6 +373,7 @@ class _$FeedFetchingState implements FeedFetchingState {
     TResult Function(FeedFetchingState value)? fetching,
     TResult Function(FeedFetchSuccessState value)? fetchSuccess,
     TResult Function(FeedFetchFailState value)? fetchFail,
+    TResult Function(FeedUpdateSortingState value)? updateSorting,
     required TResult orElse(),
   }) {
     if (fetching != null) {
@@ -433,6 +468,8 @@ class _$FeedFetchSuccessState implements FeedFetchSuccessState {
     required TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)
         fetchSuccess,
     required TResult Function() fetchFail,
+    required TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)
+        updateSorting,
   }) {
     return fetchSuccess(rssFeed, items);
   }
@@ -445,6 +482,8 @@ class _$FeedFetchSuccessState implements FeedFetchSuccessState {
     TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
         fetchSuccess,
     TResult Function()? fetchFail,
+    TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
+        updateSorting,
   }) {
     return fetchSuccess?.call(rssFeed, items);
   }
@@ -457,6 +496,8 @@ class _$FeedFetchSuccessState implements FeedFetchSuccessState {
     TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
         fetchSuccess,
     TResult Function()? fetchFail,
+    TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
+        updateSorting,
     required TResult orElse(),
   }) {
     if (fetchSuccess != null) {
@@ -472,6 +513,7 @@ class _$FeedFetchSuccessState implements FeedFetchSuccessState {
     required TResult Function(FeedFetchingState value) fetching,
     required TResult Function(FeedFetchSuccessState value) fetchSuccess,
     required TResult Function(FeedFetchFailState value) fetchFail,
+    required TResult Function(FeedUpdateSortingState value) updateSorting,
   }) {
     return fetchSuccess(this);
   }
@@ -483,6 +525,7 @@ class _$FeedFetchSuccessState implements FeedFetchSuccessState {
     TResult Function(FeedFetchingState value)? fetching,
     TResult Function(FeedFetchSuccessState value)? fetchSuccess,
     TResult Function(FeedFetchFailState value)? fetchFail,
+    TResult Function(FeedUpdateSortingState value)? updateSorting,
   }) {
     return fetchSuccess?.call(this);
   }
@@ -494,6 +537,7 @@ class _$FeedFetchSuccessState implements FeedFetchSuccessState {
     TResult Function(FeedFetchingState value)? fetching,
     TResult Function(FeedFetchSuccessState value)? fetchSuccess,
     TResult Function(FeedFetchFailState value)? fetchFail,
+    TResult Function(FeedUpdateSortingState value)? updateSorting,
     required TResult orElse(),
   }) {
     if (fetchSuccess != null) {
@@ -560,6 +604,8 @@ class _$FeedFetchFailState implements FeedFetchFailState {
     required TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)
         fetchSuccess,
     required TResult Function() fetchFail,
+    required TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)
+        updateSorting,
   }) {
     return fetchFail();
   }
@@ -572,6 +618,8 @@ class _$FeedFetchFailState implements FeedFetchFailState {
     TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
         fetchSuccess,
     TResult Function()? fetchFail,
+    TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
+        updateSorting,
   }) {
     return fetchFail?.call();
   }
@@ -584,6 +632,8 @@ class _$FeedFetchFailState implements FeedFetchFailState {
     TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
         fetchSuccess,
     TResult Function()? fetchFail,
+    TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
+        updateSorting,
     required TResult orElse(),
   }) {
     if (fetchFail != null) {
@@ -599,6 +649,7 @@ class _$FeedFetchFailState implements FeedFetchFailState {
     required TResult Function(FeedFetchingState value) fetching,
     required TResult Function(FeedFetchSuccessState value) fetchSuccess,
     required TResult Function(FeedFetchFailState value) fetchFail,
+    required TResult Function(FeedUpdateSortingState value) updateSorting,
   }) {
     return fetchFail(this);
   }
@@ -610,6 +661,7 @@ class _$FeedFetchFailState implements FeedFetchFailState {
     TResult Function(FeedFetchingState value)? fetching,
     TResult Function(FeedFetchSuccessState value)? fetchSuccess,
     TResult Function(FeedFetchFailState value)? fetchFail,
+    TResult Function(FeedUpdateSortingState value)? updateSorting,
   }) {
     return fetchFail?.call(this);
   }
@@ -621,6 +673,7 @@ class _$FeedFetchFailState implements FeedFetchFailState {
     TResult Function(FeedFetchingState value)? fetching,
     TResult Function(FeedFetchSuccessState value)? fetchSuccess,
     TResult Function(FeedFetchFailState value)? fetchFail,
+    TResult Function(FeedUpdateSortingState value)? updateSorting,
     required TResult orElse(),
   }) {
     if (fetchFail != null) {
@@ -632,4 +685,176 @@ class _$FeedFetchFailState implements FeedFetchFailState {
 
 abstract class FeedFetchFailState implements FeedState {
   factory FeedFetchFailState() = _$FeedFetchFailState;
+}
+
+/// @nodoc
+abstract class $FeedUpdateSortingStateCopyWith<$Res> {
+  factory $FeedUpdateSortingStateCopyWith(FeedUpdateSortingState value,
+          $Res Function(FeedUpdateSortingState) then) =
+      _$FeedUpdateSortingStateCopyWithImpl<$Res>;
+  $Res call({RssFeed rssFeed, List<PositionedRSSItem> items});
+}
+
+/// @nodoc
+class _$FeedUpdateSortingStateCopyWithImpl<$Res>
+    extends _$FeedStateCopyWithImpl<$Res>
+    implements $FeedUpdateSortingStateCopyWith<$Res> {
+  _$FeedUpdateSortingStateCopyWithImpl(FeedUpdateSortingState _value,
+      $Res Function(FeedUpdateSortingState) _then)
+      : super(_value, (v) => _then(v as FeedUpdateSortingState));
+
+  @override
+  FeedUpdateSortingState get _value => super._value as FeedUpdateSortingState;
+
+  @override
+  $Res call({
+    Object? rssFeed = freezed,
+    Object? items = freezed,
+  }) {
+    return _then(FeedUpdateSortingState(
+      rssFeed == freezed
+          ? _value.rssFeed
+          : rssFeed // ignore: cast_nullable_to_non_nullable
+              as RssFeed,
+      items == freezed
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<PositionedRSSItem>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FeedUpdateSortingState implements FeedUpdateSortingState {
+  _$FeedUpdateSortingState(this.rssFeed, this.items);
+
+  @override
+  final RssFeed rssFeed;
+  @override
+  final List<PositionedRSSItem> items;
+
+  @override
+  String toString() {
+    return 'FeedState.updateSorting(rssFeed: $rssFeed, items: $items)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is FeedUpdateSortingState &&
+            const DeepCollectionEquality().equals(other.rssFeed, rssFeed) &&
+            const DeepCollectionEquality().equals(other.items, items));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(rssFeed),
+      const DeepCollectionEquality().hash(items));
+
+  @JsonKey(ignore: true)
+  @override
+  $FeedUpdateSortingStateCopyWith<FeedUpdateSortingState> get copyWith =>
+      _$FeedUpdateSortingStateCopyWithImpl<FeedUpdateSortingState>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() fetching,
+    required TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)
+        fetchSuccess,
+    required TResult Function() fetchFail,
+    required TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)
+        updateSorting,
+  }) {
+    return updateSorting(rssFeed, items);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetching,
+    TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
+        fetchSuccess,
+    TResult Function()? fetchFail,
+    TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
+        updateSorting,
+  }) {
+    return updateSorting?.call(rssFeed, items);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetching,
+    TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
+        fetchSuccess,
+    TResult Function()? fetchFail,
+    TResult Function(RssFeed rssFeed, List<PositionedRSSItem> items)?
+        updateSorting,
+    required TResult orElse(),
+  }) {
+    if (updateSorting != null) {
+      return updateSorting(rssFeed, items);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FeedInitialState value) initial,
+    required TResult Function(FeedFetchingState value) fetching,
+    required TResult Function(FeedFetchSuccessState value) fetchSuccess,
+    required TResult Function(FeedFetchFailState value) fetchFail,
+    required TResult Function(FeedUpdateSortingState value) updateSorting,
+  }) {
+    return updateSorting(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(FeedInitialState value)? initial,
+    TResult Function(FeedFetchingState value)? fetching,
+    TResult Function(FeedFetchSuccessState value)? fetchSuccess,
+    TResult Function(FeedFetchFailState value)? fetchFail,
+    TResult Function(FeedUpdateSortingState value)? updateSorting,
+  }) {
+    return updateSorting?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FeedInitialState value)? initial,
+    TResult Function(FeedFetchingState value)? fetching,
+    TResult Function(FeedFetchSuccessState value)? fetchSuccess,
+    TResult Function(FeedFetchFailState value)? fetchFail,
+    TResult Function(FeedUpdateSortingState value)? updateSorting,
+    required TResult orElse(),
+  }) {
+    if (updateSorting != null) {
+      return updateSorting(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FeedUpdateSortingState implements FeedState {
+  factory FeedUpdateSortingState(
+          RssFeed rssFeed, List<PositionedRSSItem> items) =
+      _$FeedUpdateSortingState;
+
+  RssFeed get rssFeed;
+  List<PositionedRSSItem> get items;
+  @JsonKey(ignore: true)
+  $FeedUpdateSortingStateCopyWith<FeedUpdateSortingState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

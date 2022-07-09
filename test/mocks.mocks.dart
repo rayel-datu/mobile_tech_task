@@ -6,6 +6,7 @@ import 'dart:async' as _i4;
 
 import 'package:mobile_tech_task/domain/services/bible_year_rss_service.dart'
     as _i3;
+import 'package:mobile_tech_task/entities/positioned_rss_item.dart' as _i6;
 import 'package:mobile_tech_task/utilities/rss_utils.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:webfeed/webfeed.dart' as _i2;
@@ -49,4 +50,8 @@ class MockRSSUtils extends _i1.Mock implements _i5.RSSUtils {
   _i2.RssFeed convertString(String? xmlString) =>
       (super.noSuchMethod(Invocation.method(#convertString, [xmlString]),
           returnValue: _FakeRssFeed_0()) as _i2.RssFeed);
+  @override
+  List<_i6.PositionedRSSItem>? getItems(_i2.RssFeed? rssFeed) =>
+      (super.noSuchMethod(Invocation.method(#getItems, [rssFeed]))
+          as List<_i6.PositionedRSSItem>?);
 }
