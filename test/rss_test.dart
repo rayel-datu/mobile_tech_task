@@ -57,6 +57,7 @@ void main() {
       if (cubit.state is FeedFetchSuccessState) {
         FeedFetchSuccessState state = cubit.state as FeedFetchSuccessState;
         expect(state.rssFeed, isNotNull);
+        expect(state.items, isNotNull);
       }
     });
 
