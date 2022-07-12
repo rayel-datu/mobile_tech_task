@@ -16,4 +16,13 @@ class User {
 
   @override
   Map<String, dynamic> toJson() => _$UserToJson(this);
+
+  User copyWith({
+    String? name,
+    String? emailAddress,
+    String? phoneNumber,
+    String? address,
+  }) =>
+      User(name ?? this.name, emailAddress ?? this.emailAddress,
+          phoneNumber ?? this.phoneNumber, address ?? this.address);
 }
