@@ -6,7 +6,10 @@ import 'dart:async' as _i4;
 
 import 'package:mobile_tech_task/domain/services/bible_year_rss_service.dart'
     as _i3;
+import 'package:mobile_tech_task/domain/services/persistence_service.dart'
+    as _i7;
 import 'package:mobile_tech_task/entities/positioned_rss_item.dart' as _i6;
+import 'package:mobile_tech_task/entities/user.dart' as _i8;
 import 'package:mobile_tech_task/utilities/rss_utils.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:webfeed/webfeed.dart' as _i2;
@@ -51,6 +54,10 @@ class MockRSSUtils extends _i1.Mock implements _i5.RSSUtils {
       (super.noSuchMethod(Invocation.method(#convertString, [xmlString]),
           returnValue: _FakeRssFeed_0()) as _i2.RssFeed);
   @override
+  _i6.PositionedRSSItem? getRandomRSSItem(List<_i6.PositionedRSSItem>? items) =>
+      (super.noSuchMethod(Invocation.method(#getRandomRSSItem, [items]))
+          as _i6.PositionedRSSItem?);
+  @override
   List<_i6.PositionedRSSItem>? getItems(_i2.RssFeed? rssFeed) =>
       (super.noSuchMethod(Invocation.method(#getItems, [rssFeed]))
           as List<_i6.PositionedRSSItem>?);
@@ -59,4 +66,29 @@ class MockRSSUtils extends _i1.Mock implements _i5.RSSUtils {
           List<_i6.PositionedRSSItem>? newList) =>
       (super.noSuchMethod(Invocation.method(#validatePosition, [newList]))
           as List<_i6.PositionedRSSItem>?);
+}
+
+/// A class which mocks [PersistenceService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockPersistenceService extends _i1.Mock
+    implements _i7.PersistenceService {
+  MockPersistenceService() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<_i8.User?> getUser() =>
+      (super.noSuchMethod(Invocation.method(#getUser, []),
+          returnValue: Future<_i8.User?>.value()) as _i4.Future<_i8.User?>);
+  @override
+  _i4.Future<void> saveUser(_i8.User? user) =>
+      (super.noSuchMethod(Invocation.method(#saveUser, [user]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
+  @override
+  _i4.Future<void> deleteUser() =>
+      (super.noSuchMethod(Invocation.method(#deleteUser, []),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
 }

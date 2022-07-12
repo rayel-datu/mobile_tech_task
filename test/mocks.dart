@@ -1,8 +1,9 @@
 import 'package:mobile_tech_task/domain/services/bible_year_rss_service.dart';
+import 'package:mobile_tech_task/domain/services/persistence_service.dart';
 import 'package:mobile_tech_task/utilities/rss_utils.dart';
 import 'package:mockito/annotations.dart';
 
-@GenerateMocks([BibleYearRSSService, RSSUtils])
+@GenerateMocks([BibleYearRSSService, RSSUtils, PersistenceService])
 void main() {}
 
 const String rssFeedString = '''
