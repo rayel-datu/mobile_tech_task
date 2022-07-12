@@ -41,10 +41,11 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                   if (page > pages.length - 1) {
                     return;
                   }
-                  if (page < pages.length)
+                  if (page < pages.length) {
                     _pageController.animateToPage(page,
                         duration: const Duration(milliseconds: 500),
                         curve: Curves.easeInOut);
+                  }
                 });
           },
           builder: ((context, state) {
