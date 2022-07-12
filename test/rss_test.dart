@@ -12,17 +12,6 @@ import 'mocks.dart';
 import 'mocks.mocks.dart';
 
 void main() {
-  // Not a Unit test, just test if we can get RSS Feed Properly with current
-  // Retrofit Setup
-  test('test rss service', () async {
-    Dio dio = Dio();
-    BibleYearRSSService rssService = BibleYearRSSService(dio);
-    String rssFeedBody = await rssService.getRSSFeed();
-    RssFeed rssFeed = RssFeed.parse(rssFeedBody);
-
-    expect(rssFeed, isNotNull);
-  });
-
   // Unit Test for cubit
   group('Feed Screen Cubit Test', () {
     final BibleYearRSSService bibleYearRSSService = MockBibleYearRSSService();
