@@ -3,9 +3,6 @@ import 'dart:convert';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:mobile_tech_task/domain/repositories/storage/storage.dart';
 
-import 'package:mobile_tech_task/entities/saveable_wrapper.dart';
-import 'package:mobile_tech_task/entities/user.dart';
-
 class LocalRepository implements Storage {
   final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
 

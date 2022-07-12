@@ -12,14 +12,6 @@ class FeedScreenCubit extends Cubit<FeedState> {
   final RSSUtils _rssUtils;
 
   Future<void> getFeed() async {
-    FeedFetchSuccessState? previousSuccessState;
-    List<PositionedRSSItem>? oldPositionedRSSItems;
-
-    if (state is FeedFetchSuccessState) {
-      previousSuccessState = state as FeedFetchSuccessState;
-      oldPositionedRSSItems = previousSuccessState.items;
-    }
-
     emit(FeedState.fetching());
 
     String? feed;

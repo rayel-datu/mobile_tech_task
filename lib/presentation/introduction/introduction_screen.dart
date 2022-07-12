@@ -9,13 +9,13 @@ import 'package:mobile_tech_task/presentation/introduction/pages/introduction_co
 import 'package:mobile_tech_task/presentation/introduction/pages/introduction_name_page.dart';
 
 class IntroductionScreen extends StatefulWidget {
-  IntroductionScreen({Key? key}) : super(key: key);
+  const IntroductionScreen({Key? key}) : super(key: key);
 
   static const String routeName = '/introductionScreen';
 
   static ModalRoute<void> route() => MaterialPageRoute<void>(
         settings: const RouteSettings(name: routeName),
-        builder: (_) => IntroductionScreen(),
+        builder: (_) => const IntroductionScreen(),
       );
 
   @override

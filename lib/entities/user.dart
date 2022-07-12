@@ -11,10 +11,8 @@ class User {
 
   User(this.name, this.emailAddress, this.phoneNumber, this.address);
 
-  @override
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
-  @override
   Map<String, dynamic> toJson() => _$UserToJson(this);
 
   User copyWith({

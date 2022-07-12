@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mobile_tech_task/domain/services/bible_year_rss_service.dart';
 import 'package:mobile_tech_task/entities/positioned_rss_item.dart';

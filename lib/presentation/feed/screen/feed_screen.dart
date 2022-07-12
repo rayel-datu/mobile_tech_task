@@ -40,7 +40,6 @@ class _FeedScreenState extends State<FeedScreen> {
 
   @override
   Widget build(BuildContext context) {
-    RssFeed rssFeed = RssFeed();
     return BlocProvider<FeedScreenCubit>(
       create: (context) =>
           FeedScreenCubit(context.read<BibleYearRSSService>(), RSSUtils()),
@@ -83,7 +82,7 @@ class _FeedScreenState extends State<FeedScreen> {
                     Card(
                       child: Container(
                           padding: const EdgeInsets.all(8),
-                          child: Text(featured?.item.title ?? '')),
+                          child: Text(featured.item.title ?? '')),
                     ),
                   ],
                 ),
@@ -97,7 +96,7 @@ class _FeedScreenState extends State<FeedScreen> {
                     padding: EdgeInsets.only(top: index == 0 ? 0 : 4.h),
                     child: Card(
                       child: Container(
-                          padding: EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(8),
                           child: Text(items?[index].item.title ?? '')),
                     ),
                   );
