@@ -1,3 +1,5 @@
+Branches: Master / Develop, you can use either of the two.
+
 How to run:
 
 1. run flutter pub get
