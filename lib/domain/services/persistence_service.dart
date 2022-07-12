@@ -10,8 +10,14 @@ class PersistenceService {
   final LocalRepository _localRepository = LocalRepository();
 
   Future<User?> getUser() async {
-    User? user = await _localRepository.getObject<User>(PersistenceKeys.user);
-    return user;
+    Map<String, dynamic>? map =
+        await _localRepository.getObject(PersistenceKeys.user);
+
+    if (map == null) {
+      return null;
+    }
+
+    return User.fromJson(map);
   }
 
   Future<void> saveUser(User user) async {

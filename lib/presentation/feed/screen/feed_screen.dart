@@ -5,6 +5,7 @@ import 'package:mobile_tech_task/domain/services/bible_year_rss_service.dart';
 import 'package:mobile_tech_task/entities/positioned_rss_item.dart';
 import 'package:mobile_tech_task/presentation/feed/cubit/feed_screen_cubit.dart';
 import 'package:mobile_tech_task/presentation/feed/cubit/feed_state.dart';
+import 'package:mobile_tech_task/presentation/user_profile/screens/user_profile_screen.dart';
 import 'package:mobile_tech_task/utilities/rss_utils.dart';
 import 'package:webfeed/webfeed.dart';
 
@@ -60,21 +61,32 @@ class _FeedScreenState extends State<FeedScreen> {
 
         return Scaffold(
           appBar: AppBar(
-            title: FittedBox(child: Text('${rssFeed?.title}')),
+            title: FittedBox(child: Text(rssFeed?.title ?? 'RSS Feed')),
             centerTitle: true,
-            actions: [IconButton(onPressed: () {}, icon: Icon(Icons.person))],
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.push(context, UserProfileScreen.route());
+                  },
+                  icon: const Icon(Icons.person))
+            ],
           ),
           body: Column(
             children: [
               SizedBox(
                 height: 24.h,
               ),
-              const Text('Featured Entry'),
-              Card(
-                child: Container(
-                    padding: const EdgeInsets.all(8),
-                    child: Text(featured?.item.title ?? '')),
-              ),
+              if (featured != null)
+                Column(
+                  children: [
+                    const Text('Featured Entry'),
+                    Card(
+                      child: Container(
+                          padding: const EdgeInsets.all(8),
+                          child: Text(featured?.item.title ?? '')),
+                    ),
+                  ],
+                ),
               SizedBox(height: 12.h),
               Expanded(
                   child: ReorderableListView.builder(

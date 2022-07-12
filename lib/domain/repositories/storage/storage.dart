@@ -1,5 +1,5 @@
 abstract class Storage {
   Future<void> saveObject<T>(String key, T object);
-  Future<T?> getObject<T>(String key);
-  Future<void> deleteObject<T>(String key);
+  Future<Map<String, dynamic>?> getObject(String key);
+  Future<void> deleteObject(String key);
 }
