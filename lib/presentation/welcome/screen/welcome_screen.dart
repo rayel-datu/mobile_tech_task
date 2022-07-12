@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mobile_tech_task/presentation/feed/screen/feed_screen.dart';
 import 'package:mobile_tech_task/presentation/introduction/introduction_screen.dart';
 import 'package:mobile_tech_task/presentation/styles/app_text_styles.dart';
 
@@ -42,7 +43,11 @@ class WelcomeScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TextButton(onPressed: () {}, child: const Text('Skip')),
+              TextButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(context, FeedScreen.route());
+                  },
+                  child: const Text('Skip')),
               TextButton(
                   onPressed: () {
                     Navigator.pushReplacement(

@@ -67,6 +67,9 @@ class FeedScreenCubit extends Cubit<FeedState> {
     List<PositionedRSSItem> b,
     PositionedRSSItem? featured,
   ) {
+    if (oldIndex < newIndex) {
+      newIndex--;
+    }
     PositionedRSSItem positionedRSSItem = b.removeAt(oldIndex);
     b.insert(newIndex, positionedRSSItem);
 
