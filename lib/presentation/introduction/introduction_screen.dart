@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile_tech_task/app/bloc/user/user_cubit.dart';
+import 'package:mobile_tech_task/presentation/feed/screen/feed_screen.dart';
 import 'package:mobile_tech_task/presentation/introduction/cubit/introduction_screen_cubit.dart';
 import 'package:mobile_tech_task/presentation/introduction/cubit/introduction_screen_state.dart';
 import 'package:mobile_tech_task/presentation/introduction/pages/introduction_address_page.dart';
@@ -37,9 +39,10 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
           listener: (context, state) {
             state.maybeWhen(
                 orElse: () {},
-                updateUser: (user, page) {
+                updateUser: (user, page) async {
                   if (page > pages.length - 1) {
-                    return;
+                    await BlocProvider.of<UserCubit>(context).saveUser(user);
+                    Navigator.pushReplacement(context, FeedScreen.route());
                   }
                   if (page < pages.length) {
                     _pageController.animateToPage(page,
