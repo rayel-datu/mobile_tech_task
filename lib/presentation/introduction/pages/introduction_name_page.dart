@@ -14,6 +14,12 @@ class IntroductionNamePage extends StatefulWidget {
 class _IntroductionNamePageState extends State<IntroductionNamePage> {
   final TextEditingController _textEditingController = TextEditingController();
   @override
+  void dispose() {
+    _textEditingController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 8.w),

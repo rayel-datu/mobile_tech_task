@@ -17,6 +17,14 @@ class _IntroductionContactPageState extends State<IntroductionContactPage> {
       TextEditingController();
   final TextEditingController _phoneNumberTextEditingController =
       TextEditingController();
+
+  @override
+  void dispose() {
+    _emailTextEditingController.dispose();
+    _phoneNumberTextEditingController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
