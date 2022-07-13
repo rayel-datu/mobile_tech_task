@@ -32,6 +32,15 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   final TextEditingController _emailController = TextEditingController();
 
   @override
+  void dispose() {
+    _nameController.dispose();
+    _addressController.dispose();
+    _phoneController.dispose();
+    _emailController.dispose();
+    super.dispose();
+  }
+
+  @override
   void initState() {
     WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
       if (_firstRun) {

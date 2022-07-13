@@ -16,6 +16,12 @@ class IntroductionAddressPage extends StatefulWidget {
 
 class _IntroductionAddressPageState extends State<IntroductionAddressPage> {
   final TextEditingController _textEditingController = TextEditingController();
+
+  @override
+  void dispose() {
+    _textEditingController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Padding(
